@@ -7,7 +7,7 @@ using SixLabors.ImageSharp;
 Console.WriteLine("Hello, World!");
 
 var font = SystemFonts.CreateFont("Arial", 20);
-var barcode = new Barcode("9786229813997", Ean13Generator.Type.EAN13, true, $"ISBN : 9786229813997");
+var barcode = new Barcode("9786229813997", true,130,50, font, $"ISBN : 9786229813997");
 var img = barcode.GetImage();
 
 

@@ -55,9 +55,8 @@ namespace Ean13Generator
     {
         private readonly string _data;
         private readonly string _caption;
-        private readonly int _captionSpace = 50;
-        private readonly int _gape = 60;
-        private readonly Type _type = Type.EAN13;
+        private readonly int _captionSpace = 20;
+        private readonly int _gape = 20;
         private string _encodedData;
         private readonly Color _foregroundColor = Color.Black;
         private readonly Color _backgroundColor = Color.White;
@@ -78,26 +77,10 @@ namespace Ean13Generator
         public Barcode(string data, string caption)
         {
             _data = data;
-            _type = Type.EAN13;
             _caption = caption;
 
             InitializeType();
         }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Barcode" /> class.
-        /// </summary>
-        /// <param name="data">The data to encode as a barcode.</param>
-        /// <param name="type">The type of barcode. Defaults to Code128</param>
-        public Barcode(string data, Type type, string caption)
-        {
-            _data = data;
-            _type = type;
-            _caption = caption;
-
-            InitializeType();
-        }
-
         /// <summary>
         /// Initializes a new instance of the <see cref="Barcode" /> class.
         /// </summary>
@@ -121,40 +104,6 @@ namespace Ean13Generator
         public Barcode(string data, bool showLabel, Font labelFont, string caption)
         {
             _data = data;
-            _showLabel = showLabel;
-            _labelFont = labelFont;
-            _caption = caption;
-
-            InitializeType();
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Barcode" /> class.
-        /// </summary>
-        /// <param name="data">The data to encode as a barcode.</param>
-        /// <param name="type">The type of barcode. Defaults to Code128</param>
-        /// <param name="showLabel">if set to <c>true</c> show the data as a label. Defaults to false.</param>
-        public Barcode(string data, Type type, bool showLabel, string caption)
-        {
-            _data = data;
-            _type = type;
-            _showLabel = showLabel;
-            _caption = caption;
-
-            InitializeType();
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Barcode" /> class.
-        /// </summary>
-        /// <param name="data"></param>
-        /// <param name="type">The type of barcode. Defaults to Code128</param>
-        /// <param name="showLabel">if set to <c>true</c> show the data as a label. Defaults to false.</param>
-        /// <param name="labelFont">The label font. Defaults to Font("Microsoft Sans Serif", 10, FontStyle.Bold)</param>
-        public Barcode(string data, Type type, bool showLabel, Font labelFont, string caption)
-        {
-            _data = data;
-            _type = type;
             _showLabel = showLabel;
             _labelFont = labelFont;
             _caption = caption;
@@ -214,50 +163,8 @@ namespace Ean13Generator
             _caption = caption;
 
             InitializeType();
-        }      
-
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Barcode" /> class.
-        /// </summary>
-        /// <param name="data">The data to encode as a barcode.</param>
-        /// <param name="type">The type of barcode. Defaults to Code128</param>
-        /// <param name="showLabel">if set to <c>true</c> show the data as a label. Defaults to false.</param>
-        /// <param name="width">The width in pixels. Defaults to 300.</param>
-        /// <param name="height">The height in pixels. Defaults to 150.</param>
-        public Barcode(string data, Type type, bool showLabel, int width, int height, string caption)
-        {
-            _data = data;
-            _type = type;
-            _showLabel = showLabel;
-            _width = width;
-            _height = height;
-            _caption = caption;
-
-            InitializeType();
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Barcode" /> class.
-        /// </summary>
-        /// <param name="data">The data to encode as a barcode.</param>
-        /// <param name="type">The type of barcode. Defaults to Code128</param>
-        /// <param name="showLabel">if set to <c>true</c> show the data as a label. Defaults to false.</param>
-        /// <param name="width">The width in pixels. Defaults to 300.</param>
-        /// <param name="height">The height in pixels. Defaults to 150.</param>
-        /// <param name="labelFont">The label font. Defaults to Font("Microsoft Sans Serif", 10, FontStyle.Bold)</param>
-        public Barcode(string data, Type type, bool showLabel, int width, int height, Font labelFont, string caption)
-        {
-            _data = data;
-            _type = type;
-            _showLabel = showLabel;
-            _width = width;
-            _height = height;
-            _labelFont = labelFont;
-            _caption = caption;
-
-            InitializeType();
-        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Barcode" /> class.
@@ -347,36 +254,6 @@ namespace Ean13Generator
             AlignmentPosition alignmentPosition, Color backgroundColor, Color foregroundColor, Font labelFont, string caption)
         {
             _data = data;
-            _showLabel = showLabel;
-            _width = width;
-            _height = height;
-            _alignmentPosition = alignmentPosition;
-            _backgroundColor = backgroundColor;
-            _foregroundColor = foregroundColor;
-            _labelFont = labelFont;
-            _caption = caption;
-
-            InitializeType();
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Barcode" /> class.
-        /// </summary>
-        /// <param name="data">The data to encode as a barcode.</param>
-        /// <param name="type">The type of barcode. Defaults to Code128</param>
-        /// <param name="showLabel">if set to <c>true</c> show the data as a label. Defaults to false.</param>
-        /// <param name="width">The width in pixels. Defaults to 300.</param>
-        /// <param name="height">The height in pixels. Defaults to 150.</param>
-        /// <param name="labelPosition">The label position. Defaults to bottom-center.</param>
-        /// <param name="alignmentPosition">The alignment position. Defaults to center.</param>
-        /// <param name="backgroundColor">Color of the background. Defaults to white.</param>
-        /// <param name="foregroundColor">Color of the foreground. Defaults to black.</param>
-        /// <param name="labelFont">The label font. Defaults to Font("Microsoft Sans Serif", 10, FontStyle.Bold)</param>
-        public Barcode(string data, Type type, bool showLabel, int width, int height,
-            AlignmentPosition alignmentPosition, Color backgroundColor, Color foregroundColor, Font labelFont, string caption)
-        {
-            _data = data;
-            _type = type;
             _showLabel = showLabel;
             _width = width;
             _height = height;
@@ -563,25 +440,23 @@ namespace Ean13Generator
             var pos = 0;
             var halfBarWidth = (int)(iBarWidth * 0.5);
 
-            var image = new Image<Rgba32>(_width + _gape, _height);
+            var image = new Image<Rgba32>(_width , _height+ _captionSpace);
 
             if (!string.IsNullOrEmpty(_caption))
             {
-                var labelY = 0;
-                var labelX = _width / 2;
-                labelTextOptions.HorizontalAlignment = HorizontalAlignment.Center;
-                labelTextOptions.Origin = new Point(labelX, labelY);
+                var size = TextMeasurer.Measure(_data.Substring(0, 1), labelTextOptions);
+                int labelY = 0;
+                int labelX = _width/4 ;
 
-                image.Mutate(x => x.DrawText(labelTextOptions, _caption, _foregroundColor));
+                var font = GetIsbnFont();
+                image.Mutate(x => x.DrawText(_caption, font, _foregroundColor, new Point(labelX, labelY)));
             }
 
 
             image.Mutate(imageContext =>
             {
-                //clears the image and colors the entire background
                 imageContext.BackgroundColor(_backgroundColor);
 
-                //lines are fBarWidth wide so draw the appropriate color line vertically
                 var pen = new Pen(_foregroundColor, iBarWidth / iBarWidthModifier);
                 var drawingOptions = new DrawingOptions
                 {
@@ -600,11 +475,11 @@ namespace Ean13Generator
                     {
                         if (_specialLine.Any(c => c == pos))
                         {
-                            moreLength = 30;
+                            moreLength = 8;
                         }
                         imageContext.DrawLines(drawingOptions, pen,
-                            new PointF(pos * iBarWidth + shiftAdjustment + halfBarWidth + (_gape / 2), _captionSpace),
-                            new PointF(pos * iBarWidth + shiftAdjustment + halfBarWidth + (_gape / 2), _height - labelHeight + moreLength)
+                            new PointF(pos * iBarWidth + shiftAdjustment + halfBarWidth , _captionSpace),
+                            new PointF(pos * iBarWidth + shiftAdjustment + halfBarWidth , _height + moreLength)
                         );
                         moreLength = 0;
                     }
@@ -617,19 +492,16 @@ namespace Ean13Generator
             if (_showLabel)
             {
                 var font = GetIsbnFont();
-                float xEnd = 0;
+                float xEnd = iBarWidth + shiftAdjustment + halfBarWidth-10;
 
-                float yPosition = _height - labelHeight + 2;
+                float yPosition = _height + 2;
 
-                var size = TextMeasurer.Measure(_data.Substring(0, 1), labelTextOptions);
-
-                xEnd += size.Width;
                 image.Mutate(c => c.DrawText(_data.Substring(0, 1), font, Color.Black, new PointF(xEnd, yPosition)));
 
-                xEnd += 22 * iBarWidth;
+                xEnd += 20 * iBarWidth;
                 image.Mutate(c => c.DrawText(_data.Substring(1, 6), font, Color.Black, new PointF(xEnd, yPosition)));
 
-                xEnd += 48 * iBarWidth;
+                xEnd += 46 * iBarWidth;
                 image.Mutate(c => c.DrawText(_data.Substring(7), font, Color.Black, new PointF(xEnd, yPosition)));
 
 
@@ -656,7 +528,7 @@ namespace Ean13Generator
 
         private Font GetIsbnFont()
         {
-            
+
             if (_isbnFont != null)
                 return _isbnFont;
 
@@ -665,7 +537,7 @@ namespace Ean13Generator
             if (defaultFont == null)
                 throw new Exception("Label font not specified and no installed fonts found.");
 
-            return _isbnFont = SystemFonts.CreateFont(defaultFont.Name, 30, FontStyle.Bold);
+            return _isbnFont = SystemFonts.CreateFont(defaultFont.Name, 10, FontStyle.Bold);
         }
     }
 }
