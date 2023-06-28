@@ -295,8 +295,8 @@ namespace Ean13Generator
         private Font GetEffeciveFont()
         {
             FontCollection collection = new();
-            //FontFamily family = collection.Add("arial.ttf");
-            FontFamily family = collection.Add("wwwroot/assets/fonts/arial.ttf");
+            FontFamily family = collection.Add("arial.ttf");
+            //FontFamily family = collection.Add("wwwroot/assets/fonts/arial.ttf");
 
             return family.CreateFont(10, FontStyle.Regular);
         }
