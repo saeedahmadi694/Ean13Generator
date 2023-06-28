@@ -285,7 +285,7 @@ namespace Ean13Generator
             xEnd += 20 * _lineWidth;
             image.Mutate(c => c.DrawText(_data.Substring(1, 6), font, Color.Black, new PointF(xEnd, yPosition)));
 
-            xEnd += 40 * _lineWidth;
+            xEnd += 45 * _lineWidth;
             image.Mutate(c => c.DrawText(_data.Substring(7), font, Color.Black, new PointF(xEnd, yPosition)));
 
 
@@ -295,8 +295,8 @@ namespace Ean13Generator
         private Font GetEffeciveFont()
         {
             FontCollection collection = new();
-            FontFamily family = collection.Add("arial.ttf");
-            //FontFamily family = collection.Add("wwwroot/assets/fonts/arial.ttf");
+            //FontFamily family = collection.Add("arial.ttf");
+            FontFamily family = collection.Add("wwwroot/assets/fonts/arial.ttf");
 
             return family.CreateFont(10, FontStyle.Regular);
         }
